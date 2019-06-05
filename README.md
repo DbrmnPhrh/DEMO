@@ -1,2 +1,2 @@
 # DEMO
-code examples
+примеры кода
