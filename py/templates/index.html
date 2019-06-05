@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+
+<!-- 24.09.2016 08:57-->
+
+<head>
+    <title>QIX - Quick Search</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="">
+
+    <!-- styles/vendor -->
+    <link rel="stylesheet" href="../static/vendor/jqueryui/jquery-ui.min.css">
+    <!-- end -->
+
+    <!-- styles -->
+    <link rel="stylesheet" href="../static/css/customer.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <!-- end -->
+</head>
+
+<body>
+    <p><b>{{ debug_var }}</b></p>
+    <input type="button" value="TEST" onclick="TEST()" />
+
+    <a href="contractor.html">Contractor</a>
+    <a href="customer_get_offers.html">Customer_get_offers</a>
+    <a class="toggleAuthRegForms" data-action="auth" href="">Вход/регистрация</a>
+    <div id="request_div">
+        <form id="request_form">
+
+            <br>
+            <div id="alert_box">
+                <span class="close_alert">&times;</span>
+                <span><h4 id="alert_text"></h4></span>
+            </div>
+            <br>
+            <table id="you_logged_in_as">
+                <tr>
+                    <td><p>Вы вошли как:</p></td>
+                    <td><p id='user'></p></td>
+                    <td><a class='logout' href="">Выход</a></td>
+                </tr>
+            </table>
+
+            <div id="cities_div">
+                <select id="city">
+                    <option value="" selected></option>
+                </select>
+            </div>
+            <br>
+            <div id="categories_div">
+                <a class="toggleCategoriesShowHide" data-action="show" href="">Поменять категорию</a>
+                <br>
+                <br>
+                <div id="customer_categories">
+                </div>
+            </div>
+
+            <table id="request_options_table">
+                <tr>
+                    <td><p>Действие:</p></td>
+                    <td>
+                        <select id="request_type"></select>
+                    </td>
+                    <td id="subcategory_td">
+                        <select id="subcategory"></select>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+            <br>
+
+            <div id="title_text_and_request_text_div">
+                <input type="text" autocomplete='off' class="whatIsItTip" id="title_text" title="" name='title_text' rows="1" cols="50" maxlength="50" placeholder="Бренд и модель, например: Samsung GT-i9505, iPhone 6+ или HTC One SV">
+                <br>
+                <textarea autocomplete='off' class="whatIsItTip" id="request_text" title="" name='request_text' rows="6" cols="50" maxlength="600" placeholder="Напишите дополнительную информацию, например: цвет чёрный. Разбит экран, изображение есть, тачскрин работает. Прошу сообщить стоимость и сроки ремонта"></textarea>
+            </div>
+
+            <div id="email_and_phone_div">
+                <div id="user_email_div">
+                    <input autocomplete='off' type="email" id="user_email" maxlength="90" placeholder="Ваш email" />
+                    <br>
+                    <a href="" class="toggleEmailPhoneDiv" data-action="user_phone">или телефон</a>
+                </div>
+                <div id="user_phone_div">
+                    <p>Вы также можете ввести номер своего телефона вместо email. Уверяем Вас, что:</p>
+                    <p>- Ваш телефон не будет виден никаким организациям или другим пользователям</p>
+                    <p>Телефон нужен как идентификатор, который Вы помните и который позволит Вам посмотреть полученные предложения</p>
+                    <p>Отправляя быстрый запрос Вы соглашаетесь с тем, что любой пользователь сможет посмотреть размещаемую Вами информацию, если он знает Ваш email или Ваш номер телефона</p>
+                    <span>+7-</span>
+                    <input autocomplete='off' type="text" id="user_phone_preffix" maxlength="3" />
+                    <span>-</span>
+                    <input autocomplete='off' type="text" id="user_phone_number"  maxlength="7" />
+                    <br>
+                    <a href="" class="toggleEmailPhoneDiv" data-action="user_email">Я лучше введу email</a>
+                </div>
+            </div>
+
+            <div id="user_agreement_div">
+                <br>
+                <input autocomplete='off' type="checkbox" id="user_agreement_checkbox"><label for="user_agreement_checkbox">Отправка запроса означает Ваше согласие со всеми условиями </label><a href="">пользовательского соглашения</a>
+                <br>
+            </div>
+
+            <div id="send_button_div">
+                <br>
+                <input id="send_request" type="button" value="Отправить" disabled/>
+                <br>
+            </div>
+        </form>
+    </div>
+
+    <span id="view_quick_offers">
+        <a href="" class="toggleViewOffersEmailPhoneDiv" data-action="view_quick_offers_div">Я просто хочу посмотреть предложения на свой запрос</a>
+    </span>
+
+    <div id="view_quick_offers_div">
+        <br>
+        <a href="" class="toggleViewOffersEmailPhoneDiv" data-action="hide">Закрыть</a>
+        <div id="view_quick_offers_email_div">
+            <p>Просто введите email</p>
+            <input autocomplete='off' type="email" id="view_quick_offers_email" maxlength="90" placeholder="Введите email" />
+            <br>
+            <a href="" class="toggleViewOffersEmailPhoneDiv" data-action="view_quick_offers_phone">При отправке я указывал телефон</a>
+            <br>
+            <br>
+        </div>
+        <div id="view_quick_offers_phone_div">
+            <p>Просто введите телефон</p>
+            <span>+7-</span>
+            <input autocomplete='off' type="text" id="view_quick_offers_phone_preffix" maxlength="3" placeholder="9xx" />
+            <span>-</span>
+            <input autocomplete='off' type="text" id="view_quick_offers_phone_number"  maxlength="7" placeholder="xxxxxxx" />
+            <br>
+            <a href="" class="toggleViewOffersEmailPhoneDiv" data-action="view_quick_offers_email">При отправке я указывал email</a>
+            <br>
+            <br>
+        </div>
+        <p><b>КАПЧА</b></p>
+        <input type="button" id="viewOffers" value="Посмотреть предложения" />
+    </div>
+
+    <div id="authorization_div">
+        <a class="toggleAuthRegForms" href="" data-action='close'>Закрыть</a>
+        <br>
+        <p><b>Пожалуйста войдите:</b></p>
+        <br>
+        <form id="authorization_form">
+            <input autocomplete='off' type="email" id="email" maxlength="90" required placeholder="Ваш email" />
+            <br>
+            <br>
+            <input autocomplete='off' type="password" id="password" maxlength="20" required placeholder="Ваш пароль" />
+            <br>
+            <br>
+            <input type="button" id="log_in" value="Войти"/>
+            <br>
+            <br>
+            <br>
+            <a href="" class="showHidePasswordRestore" data-action="show">Забыли пароль?</a>
+            <br>
+            <br>
+            <a class="toggleAuthRegForms" href="" data-action='reg'>Ещё не зарегистрированы?</a>
+        </form>
+    </div>
+
+    <div id="registration_div">
+        <a class="toggleAuthRegForms" href="" data-action='close'>Закрыть</a>
+        <br>
+        <b>Пожалуйста зарегистрируйтесь:</b>
+        <br>
+        <p>Для быстрой регистрации введите Ваш email и придумайте пароль (рекомендуется использовать только английские буквы и цифры)</p>
+        <br>
+        <form id="registration_form">
+            <p>Вы:</p>
+            <input autocomplete='off' type="radio" name="toggle_user" class="toggleRegUserType" id="chkbox_customer" data-action="customer" checked><label for="chkbox_customer">Клиент</label>
+            <br>
+            <input autocomplete='off' type="radio" name="toggle_user" class="toggleRegUserType" id="chkbox_contractor" data-action="contractor"><label for="chkbox_contractor">Организация</label>
+            <br>
+            <input autocomplete='off' type="email" name='reg_email' id="reg_email" maxlength="90" required placeholder="Ваш email" />
+            <br>
+            <br>
+            <input autocomplete='off' type="text" name='reg_password' id="reg_password" maxlength="20" required placeholder="Ваш пароль" />
+            <br>
+            <p><b>КАПЧА</b></p>
+            <br>
+            <input type="button" id="reg_btn" value="Регистрация" />
+            <br>
+            <br>
+            <a class="toggleAuthRegForms" href="" data-action='auth'>У вас уже есть аккаунт? Войдите</a>
+            <br>
+            <br>
+        </form>
+    </div>
+
+    <div id="password_restore_div">
+        <br>
+        <br>
+        <a href="" class="showHidePasswordRestore" data-action="hide">Закрыть</a>
+        <p>Восстановление пароля:</p>
+        <form id="password_restore_form">
+            <input autocomplete='off' type="email" id="email_to_restore" maxlength="90" required placeholder="Введите email" />
+            <input type="button" id="restore_pwd" value="Получить пароль"/>
+        </form>
+            <p id="password_restore_contractor_message">Прошу написать мне в WhatsApp сообщение с просьбой о восстановлении пароля</p>
+            <br>
+            <input type="checkbox" id="pass_restore_contractor"/><label for="pass_restore_contractor">Я являюсь организацией</label>
+    </div>
+
+
+
+    <!-- scripts -->
+    <!-- html5-плагин и respond для медиа-запросов для версий IE ниже 9 -->
+    <!--[if lt IE 9]>
+    <script src="../static/vendor/afarkas/html5shiv.min.js"></script>
+    <script src="../static/vendor/afarkas/html5shiv-printshiv.min.js"></script>
+    <script src="../static/vendor/es-shims/es5-shim.min.js"></script>
+    <script src="../static/vendor/rogeriopradoj/respond.min.js"></script>
+    <![endif]-->
+    <!-- end -->
+
+    <!-- scripts/vendor -->
+    <script charset="utf8" src="../static/vendor/jquery/jquery.min.js"></script>
+    <script charset="utf8" src="../static/vendor/jqueryui/jquery-ui.min.js"></script>
+    <!-- end -->
+
+    <!-- scripts -->
+    <script charset="utf8" src="../static/js/index.js"></script>
+    <script charset="utf8" src="../static/js/auth.js"></script>
+    <script charset="utf8" src="../static/js/common.js"></script>
+    <script charset="utf8" src="../static/js/listenElemEvents.js"></script>
+    <!-- end -->
+
+</body>
+
+</html>

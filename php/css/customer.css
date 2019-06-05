@@ -1,0 +1,19 @@
+.dataTables_filter input { width: 350px; }
+
+#you_logged_in_as { display:none; }
+#cities_div { display:none; }
+#categories_div { display:none; }
+#request_options_table { display:none; }
+#subcategory_td { display:none; }
+#title_text_and_request_text_div { display:none; }
+#email_and_phone_div { display:none; }
+#user_phone_div { display:none; }
+#user_agreement_div { display:none; }
+#send_button_div { display:none; }
+#authorization_div { display:none; }
+#registration_div { display:none; }
+#password_restore_div { display:none; }
+#password_restore_contractor_message { display:none; }
+#view_quick_offers { display:none; }
+#view_quick_offers_div { display:none; }
+#view_quick_offers_phone_div { display:none; }

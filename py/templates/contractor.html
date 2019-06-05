@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+
+<!-- 24.09.2016 08:57-->
+
+<head>
+    <title>Quick Search - Организация</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="">
+http://62.109.9.13/adminer/?username=akbashev.a&db=qix_main&select=customers&order%5B0%5D=customer_name&desc%5B0%5D=1
+    <!-- styles/vendor -->
+    <link rel="stylesheet" href="../static/vendor/jquery/datatables/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../static/vendor/jqueryui/jquery-ui.min.css">
+    <!-- end -->
+
+    <!-- styles -->
+    <link rel="stylesheet" href="../static/css/contractor.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/chat.css">
+    <!-- end -->
+</head>
+
+<body>
+    <input type="button" value="TEST" onclick="TEST()" />
+
+    <table>
+        <tr>
+            <td><p>Выберите категорию:</p></td>
+            <td>
+                <select id="contractor_categories">
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td><h3><a href="index.html">INDEX</a></h3></td>
+        </tr>
+        <tr>
+            <td><p>Вы вошли как:</p></td>
+            <td><p id='user'></p></td>
+            <td><a class='logout' href="">Выход</a></td>
+        </tr>
+    </table>
+
+    <br>
+    <div id="alert_box">
+        <span class="close_alert">&times;</span>
+        <span><h4 id="alert_text"></h4></span>
+    </div>
+    <br>
+
+    <div id="offer_div">
+        (<a href="" class="offerDivShowHide" data-action="hide">Закрыть</a>)
+        <table>
+            <p><b><Таблица с конкурентами></b></p>
+        </table>
+<!--         <table border="1" id="request_info">
+            <tr>
+                <thead><tr>
+                    <th>Контакт</th>
+                    <th>Тип запроса</th>
+                    <th>Подкатегория</th>
+                    <th>Тема запроса</th>
+                    <th>Текст запроса</th>
+                </tr></thead>
+                <td><p id="customer_contact"></p></td>
+                <td><p id="request_type"></p></td>
+                <td><p id="subcategory"></p></td>
+                <td><p id="title_text"></p></td>
+                <td><p id="request_text"></p></td>
+            </tr>
+        </table> -->
+                <b><span id="customer_contact"></span></b><br>
+                <span id="request_type"></span></td>
+                <span id="subcategory"></span></td>
+                <span id="title_text"></span></td><br>
+                <span id="request_text"></span>
+        <br>
+        <form id="offer_form">
+        <table>
+            <p>Стоимость (заполните одно или оба поля):</p>
+            <tr>
+                <td><textarea autocomplete='off' rows="1" maxlength="7" id="price_from" placeholder="от"></textarea></td>
+                <td><textarea autocomplete='off' rows="1" maxlength="7" id="price_to" placeholder="до"></textarea></td>
+            </tr>
+            <tr>
+                <td>Срок:</td>
+            </tr>
+            <tr>
+                <td><textarea rows="1" maxlength="2" id="period"></textarea></td>
+                <td>
+                    <select id="period_units">
+                        <option value="60">минут</option>
+                        <option value="3600">часов</option>
+                        <option value="86400" selected>рабочих дней</option>
+                        <option value="604800">недель</option>
+                        <option value="2592000">месяцев</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><textarea autocomplete='off' rows="4" maxlength="600" id="offer_text" placeholder="Введите Ваше сообщение здесь (не более 600 символов)"></textarea></td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+        <p>Отправка предложения означает Ваше согласие со всеми условиями </label><a href="">пользовательского соглашения</a></p>
+        <br>
+        <input id="send_offer_btn"  type="button" value="Отправить предложение"/>
+        <input id="clear_offer_btn" type="button" value="Очистить поля"/>
+        <p id="results">Пожалуйста заполните любое из полей или все поля</p>
+        </form>
+        <br>
+        <div id="chat_container">
+            <div id="chat_box"></div>
+            <br>
+            <textarea autocomplete='off' id="message_text" rows="4" cols="40" maxlength="200" placeholder="Введите Ваше сообщение"></textarea>
+            <input type="button" id="message_send_btn" value="ОТПРАВИТЬ"/>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td><input autocomplete='off' type="button" id="add_requests_btn" value="Добавить новые запросы"/></td>
+            <td><input autocomplete='off' type="checkbox" id="add_requests_automaticaly" value=""/><label for="add_requests_automaticaly">Автоматически добавлять новые запросы</label></td>
+        </tr>
+    </table>
+
+
+    <div id="requests_div">
+        <table id="requests_table" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Дата и время</th>
+                    <th>№</th>
+                    <th>Тип запроса</th>
+                    <th>Подкатегория</th>
+                    <th>Тема запроса</th>
+                    <th>Текст запроса</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Ваше предложение</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Дата и время</th>
+                    <th>№</th>
+                    <th>Тип запроса</th>
+                    <th>Подкатегория</th>
+                    <th>Тема запроса</th>
+                    <th>Текст запроса</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Ваше предложение</th>
+                    <th>Статус</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- scripts -->
+    <!-- html5-плагин и respond для медиа-запросов для версий IE ниже 9 -->
+    <!--[if lt IE 9]>
+    <script src="../static/vendor/afarkas/html5shiv.min.js"></script>
+    <script src="../static/vendor/afarkas/html5shiv-printshiv.min.js"></script>
+    <script src="../static/vendor/es-shims/es5-shim.min.js"></script>
+    <script src="../static/vendor/rogeriopradoj/respond.min.js"></script>
+    <![endif]-->
+    <!-- end -->
+
+    <!-- scripts/vendor -->
+    <script charset="utf8" src="../static/vendor/jquery/jquery.min.js"></script>
+    <script charset="utf8" src="../static/vendor/jquery/jquery.timers.min.js"></script>
+    <script charset="utf8" src="../static/vendor/jquery/datatables/jquery.dataTables.min.js"></script>
+    <script charset="utf8" src="../static/vendor/jquery/datatables/intl.js"></script>
+    <script charset="utf8" src="../static/vendor/jquery/datatables/ellipsis.js"></script>
+    <script charset="utf8" src="../static/vendor/jqueryui/jquery-ui.min.js"></script>
+    <script charset="utf8" src="../static/vendor/moment/moment.js"></script>
+    <!-- end -->
+
+    <!-- scripts -->
+    <script charset="utf8" src="../static/js/contractor.js"></script>
+    <script charset="utf8" src="../static/js/auth.js"></script>
+    <script charset="utf8" src="../static/js/common.js"></script>
+    <script charset="utf8" src="../static/js/listenElemEvents.js"></script>
+    <script charset="utf8" src="../static/js/chat.js"></script>
+    <!-- end -->
+
+</body>
+
+</html>

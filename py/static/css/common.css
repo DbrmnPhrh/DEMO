@@ -1,0 +1,3 @@
+#alert_box { display:none; }
+.close_alert { cursor:pointer; }
+#alert_text { color:red; }

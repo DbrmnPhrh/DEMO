@@ -1,0 +1,23 @@
+{
+	"folders":
+	[
+		{
+			"path": "src\\app\\dashboard"
+		},
+		{
+			"path": "src\\app\\flip-card-full"
+		},
+		{
+			"path": "src\\app\\hero-detail"
+		},
+		{
+			"path": "src\\app\\hero-search"
+		},
+		{
+			"path": "src\\app\\heroes"
+		},
+		{
+			"path": "src\\app\\messages"
+		}
+	]
+}

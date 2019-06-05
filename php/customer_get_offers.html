@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+
+<!-- 24.09.2016 08:57-->
+
+<head>
+    <title>Quick Search - Получение предложений</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="">
+
+    <!-- styles/vendor -->
+    <link rel="stylesheet" href="vendor/datatables/datatables/media/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/jquery-ui.min.css">
+    <!-- end -->
+
+    <!-- styles -->
+    <link rel="stylesheet" href="css/customer.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <!-- end -->
+</head>
+
+<body>
+
+    <input type="button" value="TEST" onclick="TEST()" />
+
+    <table>
+        <tr>
+            <td><h3><a href="index.html">INDEX</a></h3></td>
+        </tr>
+        <tr>
+            <td><p id="user"></p></td>
+            <td><a class='logout' href="">Выход</a></td>
+        </tr>
+    </table>
+
+    <br>
+    <div id="alert_box">
+        <span class="close_alert">&times;</span>
+        <span><h4 id="alert_text"></h4></span>
+    </div>
+    <br>
+    <br>
+
+    <div id="current_request_div" title="">
+        <table>
+            <tr>
+                <td>
+                    <span id="category_name"></span>
+                    <span>/</span>
+                    <span id="type_and_subcategory"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Запрос №<span id="request_id"></span></b></td>
+            </tr>
+            <tr>
+                <td><b></b><span id="request_date"></span></td>
+            </tr>
+            <tr>
+                <td id="title_text"></td>
+            </tr>
+            <tr>
+                <td id="request_text"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="chat_container">
+        <div id="chat_box"></div>
+        <br>
+        <textarea autocomplete='off' id="message_text" rows="4" cols="40" maxlength="200" placeholder="Введите Ваше сообщение"></textarea>
+        <input type="button" id="message_send_btn" value="ОТПРАВИТЬ"/>
+        <br>
+        <br>
+    </div>
+
+    <input id="add_offers_btn" type="button" value="Добавить предложения"/>
+
+    <br>
+    <br>
+
+    <div id="offers_table_div">
+        <table id="offers_table" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Дата/время</th>
+                    <th>№</th>
+                    <th>Организация</th>
+                    <th>Стоимость и срок</th>
+                    <th>Комментарий</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="requests_div"></div>
+
+    <!-- scripts -->
+    <!-- html5-плагин и respond для медиа-запросов для версий IE ниже 9 -->
+    <!--[if lt IE 9]>
+    <script src="vendor/es-shims/es5-shim.min.js"></script>
+    <script src="vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="vendor/afarkas/html5shiv/dist/html5shiv-printshiv.min.js"></script>
+    <script src="vendor/rogeriopradoj/respond/dest/respond.min.js"></script>
+    <![endif]-->
+    <!-- end -->
+
+    <!-- scripts/vendor -->
+    <script charset="utf8" src="vendor/components/jquery/jquery.min.js"></script>
+    <script charset="utf8" src="vendor/components/jqueryui/jquery-ui.min.js"></script>
+    <script charset="utf8" src="vendor/patryk/jquery.timers/jquery.timers.min.js"></script>
+    <script charset="utf8" src="vendor/datatables/datatables/media/js/jquery.dataTables.js"></script>
+    <script charset="utf8" src="vendor/drmonty/datatables-plugins/dataRender/intl.js"></script>
+    <script charset="utf8" src="vendor/drmonty/datatables-plugins/dataRender/ellipsis.js"></script>
+    <script charset="utf8" src="vendor/moment/moment/moment.js"></script>
+    <!-- end -->
+
+    <!-- scripts -->
+    <script charset="utf8" src="js/customer_get_offers.js"></script>
+    <script charset="utf8" src="js/auth.js"></script>
+    <script charset="utf8" src="js/common.js"></script>
+    <script charset="utf8" src="js/listenElemEvents.js"></script>
+    <script charset="utf8" src="js/chat.js"></script>
+    <!-- end -->
+
+</body>
+
+</html>

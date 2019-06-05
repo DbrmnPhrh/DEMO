@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+#chat_box {
+  overflow: auto;
+  width: 750px;
+  height: 300px;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 0px;
+  display: inline-block;
+  background: #FFF;
+  margin: 32px 0 0 32px;
+}
+
+#chat_box ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}

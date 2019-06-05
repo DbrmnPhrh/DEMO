@@ -1,0 +1,9 @@
+node_modules/
+public/
+.git/
+winscp.rnd
+react_test.sublime-project
+react_test.sublime-workspace
+*.bak
+package.json.*
+package-lock.json

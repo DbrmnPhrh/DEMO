@@ -1,0 +1,21 @@
+<h2>Heroes List</h2>
+
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+
+<div>
+    <mat-form-field>
+      <input matInput #heroName placeholder="Hero Name">
+    </mat-form-field>
+    <button mat-button (click)="add(heroName.value); heroName.value=''">add</button>
+    <mat-checkbox>CheckBoxTest</mat-checkbox>
+    <br>
+</div>
+
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/detail/{{hero.id}}" align="left">
+          <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
+        <span class="delete" title="delete hero" (click)="delete(hero)">x</span>
+    </li>
+</ul>
